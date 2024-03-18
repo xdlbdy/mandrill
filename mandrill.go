@@ -226,7 +226,7 @@ func (c *Client) Ping() (pong string, err error) {
 
 	data.Key = c.Key
 
-	body, err := c.sendApiRequest(data, "users/ping.json")
+	body, err := c.sendApiRequest(data, "users/ping")
 	if err != nil {
 		return pong, err
 	}
@@ -255,7 +255,7 @@ func (c *Client) MessagesSend(message *Message) (responses []*Response, err erro
 	data.IPPool = message.IPPool
 	data.SendAt = message.SendAt
 
-	return c.sendMessagePayload(data, "messages/send.json")
+	return c.sendMessagePayload(data, "messages/send")
 }
 
 // MessagesSendTemplate sends a message using a Mandrill template
@@ -282,7 +282,7 @@ func (c *Client) MessagesSendTemplate(message *Message, templateName string, con
 	data.IPPool = message.IPPool
 	data.SendAt = message.SendAt
 
-	return c.sendMessagePayload(data, "messages/send-template.json")
+	return c.sendMessagePayload(data, "messages/send-template")
 }
 
 func (c *Client) sendMessagePayload(data interface{}, path string) (responses []*Response, err error) {
